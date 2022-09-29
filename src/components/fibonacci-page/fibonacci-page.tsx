@@ -4,6 +4,7 @@ import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
+import InputWrapper from "../input-wrapper/input-wrapper";
 
 export const FibonacciPage: FC = () => {
   //перестановка по нажатию на "Развернуть"
@@ -13,100 +14,78 @@ export const FibonacciPage: FC = () => {
 
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
-      <div className={styles.wrapper}>
+      <InputWrapper>
         <Input
           placeholder="Введите число"
           extraClass={styles.input}
           type={"number"}
           isLimitText={true}
           max={19}
-        />
-        <Button text={"Рассчитать"} onClick={handleClick} />
-      </div>
-      <div className={styles.wrapper}>
+          />
+          <Button text={"Рассчитать"} onClick={handleClick} />
+        </InputWrapper>
         <ul className={styles.list}>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"1"} />
-            <p>0</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"1"} />
-            <p>1</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"2"} />
-            <p>2</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"3"} />
-            <p>3</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"5"} />
-            <p>4</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"8"} />
-            <p>5</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"13"} />
-            <p>6</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"21"} />
-            <p>7</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"34"} />
-            <p>8</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"55"} />
-            <p>9</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"89"} />
-            <p>10</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"144"} />
-            <p>11</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"233"} />
-            <p>12</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"377"} />
-            <p>13</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"610"} />
-            <p>14</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"987"} />
-            <p>15</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"1597"} />
-            <p>16</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"2584"} />
-            <p>17</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
+          <li>
             <Circle letter={"4181"} />
-            <p>18</p>
           </li>
-          <li className={`${styles["list-element"]}`}>
-            <Circle letter={"6765"} />
-            <p>19</p>
+          <li>
+            <Circle letter={"6765"} index={19} />
           </li>
         </ul>
-      </div>
-    </SolutionLayout>
-  );
-};
+      </SolutionLayout>
+    );
+  };
