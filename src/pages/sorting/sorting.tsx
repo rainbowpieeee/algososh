@@ -1,11 +1,11 @@
 import { FC } from "react";
 import styles from "./sorting.module.css";
-import { SolutionLayout } from "../ui/solution-layout/solution-layout";
-import { RadioInput } from "../ui/radio-input/radio-input";
-import { Button } from "../ui/button/button";
-import { Column } from "../ui/column/column";
+import { SolutionLayout } from "../../components/ui/solution-layout/solution-layout";
+import { RadioInput } from "../../components/ui/radio-input/radio-input";
+import { Button } from "../../components/ui/button/button";
+import { Column } from "../../components/ui/column/column";
 import { Direction } from "../../types/direction";
-import InputWrapper from "../input-wrapper/input-wrapper";
+import InputWrapper from "../../components/input-wrapper/input-wrapper";
 
 export const SortingPage: FC = () => {
   const generateNewArray = () => {
