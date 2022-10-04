@@ -61,7 +61,7 @@ export const StringComponent: FC = () => {
         await setDelay(DELAY_IN_MS);
         // меняем их местами
         swapArrElements(arr, start, end);
-        //меняем цвет на переставленных элементах
+        // меняем цвет на переставленных элементах
         arr[start].state = ElementStates.Modified;
         arr[end].state = ElementStates.Modified;
         setCharArr([...arr]);
@@ -75,6 +75,7 @@ export const StringComponent: FC = () => {
     <SolutionLayout title="Строка">
       <InputWrapper>
         <Input
+          disabled={inProсess}
           extraClass={styles.input}
           isLimitText={true}
           maxLength={11}
