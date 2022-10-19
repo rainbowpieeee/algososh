@@ -33,17 +33,39 @@ export const SortingPage: FC = () => {
     processSetter(true);
     const arr = [...initialArr];
 
-    for (let i = 0; i < arr.length - 1; i++) {
+    for (let i = 0; i < arr.length; i++) {
+      console.log("i", i);
+      console.log("arr i", arr);
       for (let j = 0; j < arr.length - i - 1; j++) {
+        console.log("j", j);
+        console.log("arr j", arr);
+        // выделяем элементы, которые будем сравнивать
+        arr[j].state = ElementStates.Changing;
+        arr[j + 1].state = ElementStates.Changing;
         initialArrSetter([...arr]);
         await setDelay(SHORT_DELAY_IN_MS);
-        if (arr[j].number > arr[j + 1].number) {
+        if (
+          (sortingOption === "ascending" ? arr[j].number : arr[j + 1].number) >
+          (sortingOption === "ascending" ? arr[j + 1].number : arr[j].number)
+        ) {
           initialArrSetter([...arr]);
           swapArrElements(arr, j, j + 1);
+          await setDelay(SHORT_DELAY_IN_MS);
+        }
+        // убираем розовую подсветку после сравнения элементов и возможного свопа
+        arr[j].state = ElementStates.Default;
+        arr[j + 1].state = ElementStates.Default;
+        // красим в зеленый последний во внутреннем цикле и в итоге отсортированный
+        if (j === arr.length - i - 2) {
+          arr[j + 1].state = ElementStates.Modified;
         }
       }
+      //прошли весь внешний цикл и красим оставшийся элемент в зеленый
+      if (i === arr.length - 1) {
+        arr[0].state = ElementStates.Modified;
+      }
     }
-    //initialArrSetter([...arr]);
+    initialArrSetter([...arr]);
     processSetter(false);
   };
 
@@ -58,16 +80,44 @@ export const SortingPage: FC = () => {
     console.log("arr", arr);
     for (let i = 0; i < arr.length - 1; i++) {
       let swapInd = i;
-      console.log("arr", arr);
-      console.log("swapInd i", swapInd);
+      console.log("arr в первом цикле", arr);
+      // await setDelay(SHORT_DELAY_IN_MS);
+
       for (let j = i + 1; j < arr.length; j++) {
-        if (arr[swapInd].number < arr[j].number) {
+        console.log("swapInd i", swapInd);
+        console.log("arr[swapInd] розовым", arr[swapInd].number);
+        console.log("j", j);
+        console.log("arr[j] розовым", arr[j].number);
+        //подсвечиваем розовым два сравниваемых элемента
+        arr[swapInd].state = ElementStates.Changing;
+        await setDelay(SHORT_DELAY_IN_MS);
+        arr[j].state = ElementStates.Changing;
+        if (
+          (sortingOption === "ascending"
+            ? arr[swapInd].number
+            : arr[j].number) >
+          (sortingOption === "ascending" ? arr[j].number : arr[swapInd].number)
+        ) {
           swapInd = j;
-          console.log("swapInd j", swapInd);
+          console.log("меняем в условии swapInd с i на j", swapInd);
           initialArrSetter([...arr]);
           console.log("arr in j", arr);
           await setDelay(SHORT_DELAY_IN_MS);
+        } else {
+          // если нет, то убираем выделение и выделяем слудующий
+
+          arr[j].state = ElementStates.Default;
+          console.log(
+            "если arr[swapInd].number < arr[j].number arr[j] в синий не меняем",
+            arr[j].number
+          );
         }
+        console.log("swapInd после условия в цикле j", swapInd);
+        console.log("arr[swapInd] зеленым", arr[swapInd].number);
+        arr[swapInd].state = ElementStates.Modified;
+        /*if (i === arr.length - 2 || j === arr.length - 1) {
+          arr[arr.length - 1].state = ElementStates.Modified;
+        }*/
       }
       if (swapInd !== i) {
         swapArrElements(arr, swapInd, i);
@@ -76,7 +126,7 @@ export const SortingPage: FC = () => {
         await setDelay(SHORT_DELAY_IN_MS);
       }
     }
-
+    initialArrSetter([...arr]);
     processSetter(false);
   };
 
