@@ -8,6 +8,7 @@ import { SolutionLayout } from "../../components/ui/solution-layout/solution-lay
 import { ElementStates } from "../../types/element-states";
 import { setDelay } from "../../utils/utils";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { ICircleElement } from "../../types/types";
 
 export interface IStack<T> {
   push: (item: T) => void;
@@ -38,19 +39,6 @@ export class Stack<T> implements IStack<T> {
   getSize = () => this.container.length;
 
   clear = () => (this.container.length = 0);
-}
-
-export interface ICircleElement {
-  adding?: boolean;
-  deleting?: boolean;
-  withoutArrow?: boolean;
-  tail?: string;
-  head?: string;
-  char?: string | null;
-  extraCircle?: {
-    char: string;
-  };
-  state: ElementStates;
 }
 
 export const StackPage: FC = () => {
@@ -84,8 +72,6 @@ export const StackPage: FC = () => {
       char: pushedElement ? pushedElement : "",
       state: ElementStates.Default,
     });
-    setElementsArr([...elementsArr]);
-    await setDelay(SHORT_DELAY_IN_MS);
     //Изменить стейт головы и сделать отментку top, подсветка розовым на время задержки
     elementsArr[elementsArr.length - 1].head = "top";
     elementsArr[elementsArr.length - 1].state = ElementStates.Changing;
@@ -107,8 +93,6 @@ export const StackPage: FC = () => {
     // проверка на пустоту стэка
     if (stack.getSize()) {
       elementsArr.pop();
-      setElementsArr([...elementsArr]);
-      await setDelay(SHORT_DELAY_IN_MS);
       //Изменить стейт головы и сделать отментку top
       elementsArr[elementsArr.length - 1].head = "top";
       elementsArr[elementsArr.length - 1].state = ElementStates.Changing;
