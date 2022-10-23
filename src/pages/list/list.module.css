@@ -26,6 +26,21 @@
     list-style-type: none;
   }
   
-  .listElement {
+  .listElementsWrapper {
     display: flex;
+    align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.topCirlce {
+  position: absolute;
+  top: -62px;
+  left: 11px;
+}
+
+.buttomCircle {
+  position: absolute;
+  top: 120px;
+  left: 11px;
   }
