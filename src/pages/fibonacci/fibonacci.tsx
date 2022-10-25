@@ -5,7 +5,8 @@ import { Input } from "../../components/ui/input/input";
 import { Button } from "../../components/ui/button/button";
 import { Circle } from "../../components/ui/circle/circle";
 import InputWrapper from "../../components/input-wrapper/input-wrapper";
-import { getFibanacciArr, setDelay } from "../../utils/utils";
+import { getFibonacciArr } from "./utils";
+import { setDelay } from "../../utils/utils";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 
 export const FibonacciPage: FC = () => {
@@ -24,7 +25,7 @@ export const FibonacciPage: FC = () => {
     inputValueSetter(0);
     //блокировка кнопки и ввода - лоадер
     processSetter(true);
-    const resultFibonacciArr = [...getFibanacciArr(inputNumber)];
+    const resultFibonacciArr = [...getFibonacciArr(inputNumber)];
     const renderFibonacciArr: number[] = [];
     for (let el of resultFibonacciArr) {
       renderFibonacciArr.push(el);
