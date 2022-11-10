@@ -22,7 +22,6 @@ export function getReversingStringSteps(inputString: string): string[][] {
   const inputStringChars = inputString.split("");
   const reversingSteps: string[][] = [[...inputStringChars]];
 
-  console.log("reversingSteps in utils", reversingSteps);
 
   if (inputString.length <= 1) {
     return [[...inputStringChars]];
@@ -34,7 +33,6 @@ export function getReversingStringSteps(inputString: string): string[][] {
   // в середине заканчиваем переворот
 
   const maxAlgoIteration = Math.ceil((inputString.length - 1) / 2);
-  //console.log(maxAlgoIteration);
 
   // метод двух указателей
   for (
