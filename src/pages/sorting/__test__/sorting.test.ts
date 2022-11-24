@@ -1,8 +1,9 @@
 import { ElementStates } from "../../../types/element-states";
+import { IColumn } from "../sorting";
 import { bubbleSortingAlgo, selectionSortingAlgo } from "../utils";
 
 describe("bubble sorting algorithm test.", () => {
-  let testingArr = [];
+  let testingArr: IColumn[] = [];
 
   beforeEach(() => {
     testingArr = [
@@ -44,7 +45,7 @@ describe("bubble sorting algorithm test.", () => {
   });
 
   it("Correctly sorts an empty array", () => {
-    const resultingArr = [];
+    const resultingArr: any[] = [];
     expect(bubbleSortingAlgo("ascending", []).stepResArray).toStrictEqual(
       resultingArr
     );
@@ -61,7 +62,7 @@ describe("bubble sorting algorithm test.", () => {
 });
 
 describe("selection sorting algorithm test.", () => {
-  let testingArr = [];
+  let testingArr: IColumn[] = [];
 
   beforeEach(() => {
     testingArr = [
@@ -103,7 +104,7 @@ describe("selection sorting algorithm test.", () => {
   });
 
   it("Correctly sorts an empty array", () => {
-    const resultingArr = [];
+    const resultingArr: any[] = [];
     expect(selectionSortingAlgo("ascending", []).stepResArray).toStrictEqual(
       resultingArr
     );
