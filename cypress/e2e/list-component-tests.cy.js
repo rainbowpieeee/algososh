@@ -1,60 +1,62 @@
+import { CIRCLE_CIRCLE, CIRCLE_CONTENT, CIRCLE_SMALL, INPUT, INPUT_INDEX, INPUT_VALUE, INPUT_ADD_HEAD, 
+  INPUT_ADD_INDEX, INPUT_ADD_TAIL, INPUT_DEL_HEAD, INPUT_DEL_INDEX, INPUT_DEL_TAIL} from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
-describe("queue component works correctly", () => {
+describe("list component works correctly", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/list");
+    cy.visit("/list");
   });
 
   describe("check the button's status", () => {
     it("If the input is empty, then the add buttons are not available", () => {
-      cy.get("input").should("have.value", "");
-      cy.contains("Добавить в head").should("be.disabled");
-      cy.contains("Добавить в tail").should("be.disabled");
-      cy.contains("Удалить из head").should("not.be.disabled");
-      cy.contains("Удалить из tail").should("not.be.disabled");
-      cy.contains("Добавить по индексу").should("be.disabled");
-      cy.contains("Удалить по индексу").should("be.disabled");
+      cy.get(INPUT).should("have.value", "");
+      cy.contains(INPUT_ADD_HEAD).should("be.disabled");
+      cy.contains(INPUT_ADD_TAIL).should("be.disabled");
+      cy.contains(INPUT_DEL_HEAD).should("not.be.disabled");
+      cy.contains(INPUT_DEL_TAIL).should("not.be.disabled");
+      cy.contains(INPUT_ADD_INDEX).should("be.disabled");
+      cy.contains(INPUT_DEL_INDEX).should("be.disabled");
     });
 
     it("If the value input is not empty, then the add button is available", () => {
-      cy.get('input[name="value"]').type("239");
-      cy.contains("Добавить в head").should("not.be.disabled");
-      cy.contains("Добавить в tail").should("not.be.disabled");
-      cy.contains("Удалить из head").should("not.be.disabled");
-      cy.contains("Удалить из tail").should("not.be.disabled");
-      cy.contains("Добавить по индексу").should("be.disabled");
-      cy.contains("Удалить по индексу").should("be.disabled");
+      cy.get(INPUT_VALUE).type("239");
+      cy.contains(INPUT_ADD_HEAD).should("not.be.disabled");
+      cy.contains(INPUT_ADD_TAIL).should("not.be.disabled");
+      cy.contains(INPUT_DEL_HEAD).should("not.be.disabled");
+      cy.contains(INPUT_DEL_TAIL).should("not.be.disabled");
+      cy.contains(INPUT_ADD_INDEX).should("be.disabled");
+      cy.contains(INPUT_DEL_INDEX).should("be.disabled");
     });
 
     it("If the value and index inputs are not empty, then the add by index button is available", () => {
-      cy.get('input[name="value"]').type("239");
-      cy.get('input[name="index"]').type("2");
-      cy.contains("Добавить в head").should("not.be.disabled");
-      cy.contains("Добавить в tail").should("not.be.disabled");
-      cy.contains("Удалить из head").should("not.be.disabled");
-      cy.contains("Удалить из tail").should("not.be.disabled");
-      cy.contains("Добавить по индексу").should("not.be.disabled");
-      cy.contains("Удалить по индексу").should("not.be.disabled");
+      cy.get(INPUT_VALUE).type("239");
+      cy.get(INPUT_INDEX).type("2");
+      cy.contains(INPUT_ADD_HEAD).should("not.be.disabled");
+      cy.contains(INPUT_ADD_TAIL).should("not.be.disabled");
+      cy.contains(INPUT_DEL_HEAD).should("not.be.disabled");
+      cy.contains(INPUT_DEL_TAIL).should("not.be.disabled");
+      cy.contains(INPUT_ADD_INDEX).should("not.be.disabled");
+      cy.contains(INPUT_DEL_INDEX).should("not.be.disabled");
     });
 
-    it("If the  index input is not empty, then the delete by index button is available", () => {
-      cy.get('input[name="index"]').type("2");
-      cy.contains("Добавить в head").should("be.disabled");
-      cy.contains("Добавить в tail").should("be.disabled");
-      cy.contains("Удалить из head").should("not.be.disabled");
-      cy.contains("Удалить из tail").should("not.be.disabled");
-      cy.contains("Добавить по индексу").should("be.disabled");
-      cy.contains("Удалить по индексу").should("not.be.disabled");
+    it("If the index input is not empty, then the delete by index button is available", () => {
+      cy.get(INPUT_INDEX).type("2");
+      cy.contains(INPUT_ADD_HEAD).should("be.disabled");
+      cy.contains(INPUT_ADD_TAIL).should("be.disabled");
+      cy.contains(INPUT_DEL_HEAD).should("not.be.disabled");
+      cy.contains(INPUT_DEL_TAIL).should("not.be.disabled");
+      cy.contains(INPUT_ADD_INDEX).should("be.disabled");
+      cy.contains(INPUT_DEL_INDEX).should("not.be.disabled");
     });
   });
 
   describe("check the linked list algo and render works correctly", () => {
     it("Check render a default linked list", () => {
-      cy.get("[class*=circle_content]")
-        .should("have.length", 6)
+      cy.get(CIRCLE_CONTENT)
+        .should("have.length", 4)
         .each(($item, index) => {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
           if (index === 0) {
             expect($item).to.contain("head");
@@ -66,14 +68,14 @@ describe("queue component works correctly", () => {
     });
 
     it("Check add node to the head of the linked list", () => {
-      cy.get('input[name="value"]').type("239");
-      cy.contains("Добавить в head").click();
+      cy.get(INPUT_VALUE).type("239");
+      cy.contains(INPUT_ADD_HEAD).click();
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           cy.wrap($item)
             .siblings()
-            .find("[class*=circle_small]")
+            .find(CIRCLE_SMALL)
             .should("have.css", "border", "4px solid rgb(210, 82, 225)")
             .should("have.text", "239");
         }
@@ -81,10 +83,10 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(127, 224, 81)")
             .should("have.text", "239");
         }
@@ -92,11 +94,11 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("head");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)")
             .should("have.text", "239");
         }
@@ -104,20 +106,20 @@ describe("queue component works correctly", () => {
     });
 
     it("Check add node to the tail of the linked list", () => {
-      cy.get('input[name="value"]').type("239");
-      cy.contains("Добавить в tail").click();
+      cy.get(INPUT_VALUE).type("239");
+      cy.contains(INPUT_ADD_TAIL).click();
 
       for (let i = 0; i <= 6; i++) {
-        cy.get("[class*=circle_content]").each(($item, index) => {
+        cy.get(CIRCLE_CONTENT).each(($item, index) => {
           let currentIdx = i;
           if (index < currentIdx)
             cy.wrap($item)
-              .find("[class*=circle_circle]")
+              .find(CIRCLE_CIRCLE)
               .should("have.css", "border", "4px solid rgb(210, 82, 225)");
           if (index === currentIdx) {
             cy.wrap($item)
               .siblings()
-              .find("[class*=circle_small]")
+              .find(CIRCLE_SMALL)
               .should("have.css", "border", "4px solid rgb(210, 82, 225)")
               .should("have.text", "239");
           }
@@ -126,10 +128,10 @@ describe("queue component works correctly", () => {
         cy.wait(SHORT_DELAY_IN_MS);
       }
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 6) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(127, 224, 81)")
             .should("have.text", "239");
         }
@@ -137,10 +139,10 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 6) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)")
             .should("have.text", "239");
           expect($item).to.contain("tail");
@@ -149,21 +151,21 @@ describe("queue component works correctly", () => {
     });
 
     it("Check add node by index to the linked list", () => {
-      cy.get('input[name="value"]').type("239");
-      cy.get('input[name="index"]').type("3");
-      cy.contains("Добавить по индексу").click();
+      cy.get(INPUT_VALUE).type("239");
+      cy.get(INPUT_INDEX).type("3");
+      cy.contains(INPUT_ADD_INDEX).click();
 
       for (let i = 0; i <= 3; i++) {
-        cy.get("[class*=circle_content]").each(($item, index) => {
+        cy.get(CIRCLE_CONTENT).each(($item, index) => {
           let currentIdx = i;
           if (index < currentIdx)
             cy.wrap($item)
-              .find("[class*=circle_circle]")
+              .find(CIRCLE_CIRCLE)
               .should("have.css", "border", "4px solid rgb(210, 82, 225)");
           if (index === currentIdx) {
             cy.wrap($item)
               .siblings()
-              .find("[class*=circle_small]")
+              .find(CIRCLE_SMALL)
               .should("have.css", "border", "4px solid rgb(210, 82, 225)")
               .should("have.text", "239");
           }
@@ -172,10 +174,10 @@ describe("queue component works correctly", () => {
         cy.wait(SHORT_DELAY_IN_MS);
       }
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 3) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(127, 224, 81)")
             .should("have.text", "239");
         }
@@ -183,10 +185,10 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 3) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)")
             .should("have.text", "239");
           expect($item).to.contain("3");
@@ -195,13 +197,13 @@ describe("queue component works correctly", () => {
     });
 
     it("Check remove node from the head of the linked list", () => {
-      cy.contains("Удалить из head").click();
+      cy.contains(INPUT_DEL_HEAD).click();
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           cy.wrap($item)
             .siblings()
-            .find("[class*=circle_small]")
+            .find(CIRCLE_SMALL)
             .should("have.css", "border", "4px solid rgb(210, 82, 225)")
             .should("not.have.text", "");
         }
@@ -209,34 +211,34 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
       });
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("head");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
       });
     });
 
     it("Check remove node from the tail of the linked list", () => {
-      cy.contains("Удалить из tail").click();
+      cy.contains(INPUT_DEL_TAIL).click();
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 5) {
           cy.wrap($item)
             .siblings()
-            .find("[class*=circle_small]")
+            .find(CIRCLE_SMALL)
             .should("have.css", "border", "4px solid rgb(210, 82, 225)")
             .should("not.have.text", "");
         }
@@ -244,46 +246,46 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 5) {
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(127, 224, 81)");
         }
       });
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 5) {
           expect($item).to.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
       });
     });
 
     it("Check remove node by index", () => {
-      cy.get('input[name="value"]').type("239");
-      cy.get('input[name="index"]').type("3");
-      cy.contains("Удалить по индексу").click();
+      cy.get(INPUT_VALUE).type("239");
+      cy.get(INPUT_INDEX).type("3");
+      cy.contains(INPUT_DEL_INDEX).click();
 
       for (let i = 0; i <= 3; i++) {
-        cy.get("[class*=circle_content]").each(($item, index) => {
+        cy.get(CIRCLE_CONTENT).each(($item, index) => {
           let currentIdx = i;
           if (index <= currentIdx)
             cy.wrap($item)
-              .find("[class*=circle_circle]")
-              .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+              .find(CIRCLE_CIRCLE)
+              .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         });
         cy.wait(SHORT_DELAY_IN_MS);
       }
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 3) {
           cy.wrap($item)
             .siblings()
-            .find("[class*=circle_small]")
+            .find(CIRCLE_SMALL)
             .should("have.css", "border", "4px solid rgb(210, 82, 225)")
             .should("not.have.text", "");
         }
@@ -291,9 +293,9 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item) => {
+      cy.get(CIRCLE_CONTENT).each(($item) => {
         cy.wrap($item)
-          .find("[class*=circle_circle]")
+          .find(CIRCLE_CIRCLE)
           .should("have.css", "border", "4px solid rgb(0, 50, 255)");
       });
     });

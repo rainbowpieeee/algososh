@@ -1,52 +1,53 @@
+import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR } from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("queue component works correctly", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/queue");
+    cy.visit("/queue");
   });
 
   describe("check the button's status", () => {
     it("If the input is empty, then the add button is not available", () => {
-      cy.get("input").should("have.value", "");
-      cy.contains("Добавить").should("be.disabled");
+      cy.get(INPUT).should("have.value", "");
+      cy.contains(BUTTON__ADD).should("be.disabled");
     });
 
     it("If the input is not empty, then the add button is available", () => {
-      cy.get("input").type("239");
-      cy.contains("Добавить").should("not.be.disabled");
-      cy.contains("Удалить").should("be.disabled");
-      cy.contains("Очистить").should("be.disabled");
+      cy.get(INPUT).type("239");
+      cy.contains(BUTTON__ADD).should("not.be.disabled");
+      cy.contains(BUTTON__DELETE).should("be.disabled");
+      cy.contains(BUTTON__CLEAR).should("be.disabled");
     });
 
     it("After adding the element, then the clear and del buttons is available", () => {
-      cy.get("input").type("239");
-      cy.contains("Добавить").click();
-      cy.contains("Добавить").should("be.disabled");
-      cy.contains("Удалить").should("not.be.disabled");
-      cy.contains("Очистить").should("not.be.disabled");
+      cy.get(INPUT).type("239");
+      cy.contains(BUTTON__ADD).click();
+      cy.contains(BUTTON__ADD).should("be.disabled");
+      cy.contains(BUTTON__DELETE).should("not.be.disabled");
+      cy.contains(BUTTON__CLEAR).should("not.be.disabled");
     });
 
     it("After clear the queue, then all buttons is not available", () => {
-      cy.get("input").type("239");
-      cy.contains("Добавить").click();
-      cy.get("input").type("fml");
-      cy.contains("Добавить").click();
-      cy.get("input").clear();
-      cy.contains("Очистить").click();
-      cy.contains("Добавить").should("be.disabled");
-      cy.contains("Удалить").should("be.disabled");
-      cy.contains("Очистить").should("be.disabled");
+      cy.get(INPUT).type("239");
+      cy.contains(BUTTON__ADD).click();
+      cy.get(INPUT).type("fml");
+      cy.contains(BUTTON__ADD).click();
+      cy.get(INPUT).clear();
+      cy.contains(BUTTON__CLEAR).click();
+      cy.contains(BUTTON__ADD).should("be.disabled");
+      cy.contains(BUTTON__DELETE).should("be.disabled");
+      cy.contains(BUTTON__CLEAR).should("be.disabled");
     });
   });
 
   describe("check the queue algo and render works correctly", () => {
     it("Check add elements", () => {
       //add an element
-      cy.get("input").type("Y");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("Y");
+      cy.contains(BUTTON__ADD).click();
 
       //checking content
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("Y");
           expect($item).to.contain("0");
@@ -56,7 +57,7 @@ describe("queue component works correctly", () => {
       });
 
       //checking rendering
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 0) {
@@ -71,7 +72,7 @@ describe("queue component works correctly", () => {
       cy.wait(SHORT_DELAY_IN_MS);
 
       //checking rendering
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 0) {
@@ -84,11 +85,11 @@ describe("queue component works correctly", () => {
         });
 
       //add an element
-      cy.get("input").type("E");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("E");
+      cy.contains(BUTTON__ADD).click();
 
       //checking content
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("Y");
           expect($item).to.contain("0");
@@ -102,7 +103,7 @@ describe("queue component works correctly", () => {
       });
 
       //checking rendering
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 1) {
@@ -117,7 +118,7 @@ describe("queue component works correctly", () => {
       cy.wait(SHORT_DELAY_IN_MS);
 
       //checking rendering
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 1) {
@@ -130,11 +131,11 @@ describe("queue component works correctly", () => {
         });
 
       //add an element
-      cy.get("input").type("S");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("S");
+      cy.contains(BUTTON__ADD).click();
 
       //checking content
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("Y");
           expect($item).to.contain("0");
@@ -152,7 +153,7 @@ describe("queue component works correctly", () => {
       });
 
       //checking rendering
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 2) {
@@ -167,7 +168,7 @@ describe("queue component works correctly", () => {
       cy.wait(SHORT_DELAY_IN_MS);
 
       //checking rendering
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 2) {
@@ -182,18 +183,18 @@ describe("queue component works correctly", () => {
 
     it("Check remove elements", () => {
       // first add some elements
-      cy.get("input").type("2");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("2");
+      cy.contains(BUTTON__ADD).click();
       cy.wait(SHORT_DELAY_IN_MS);
-      cy.get("input").type("3");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("3");
+      cy.contains(BUTTON__ADD).click();
       cy.wait(SHORT_DELAY_IN_MS);
-      cy.get("input").type("9");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("9");
+      cy.contains(BUTTON__ADD).click();
       cy.wait(SHORT_DELAY_IN_MS);
 
       //checking content
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("2");
           expect($item).to.contain("0");
@@ -211,9 +212,9 @@ describe("queue component works correctly", () => {
       });
 
       //delete an element
-      cy.contains("Удалить").click();
+      cy.contains(BUTTON__DELETE).click();
 
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 0)
@@ -226,13 +227,13 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.not.contain("2");
           expect($item).to.not.contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
         if (index === 1) {
@@ -240,7 +241,7 @@ describe("queue component works correctly", () => {
           expect($item).contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
         if (index === 2) {
@@ -248,15 +249,15 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("head");
           expect($item).contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
       });
 
       //delete an element
-      cy.contains("Удалить").click();
+      cy.contains(BUTTON__DELETE).click();
 
-      cy.get("[class*=circle_circle]")
+      cy.get(CIRCLE_CIRCLE)
         .should("have.length", 7)
         .each(($item, index) => {
           if (index === 1)
@@ -269,13 +270,13 @@ describe("queue component works correctly", () => {
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.not.contain("2");
           expect($item).to.not.contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
         if (index === 1) {
@@ -283,7 +284,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
         if (index === 2) {
@@ -291,23 +292,23 @@ describe("queue component works correctly", () => {
           expect($item).contain("head");
           expect($item).contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
       });
 
       //delete an element
-      cy.contains("Удалить").click();
+      cy.contains(BUTTON__DELETE).click();
 
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.not.contain("2");
           expect($item).to.not.contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
         if (index === 1) {
@@ -315,7 +316,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
         if (index === 2) {
@@ -323,24 +324,24 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("head");
           expect($item).to.not.contain("tail");
           cy.wrap($item)
-            .find("[class*=circle_circle]")
+            .find(CIRCLE_CIRCLE)
             .should("have.css", "border", "4px solid rgb(0, 50, 255)");
         }
       });
     });
 
     it("Check clear queue", () => {
-      cy.get("input").type("2");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("2");
+      cy.contains(BUTTON__ADD).click();
       cy.wait(SHORT_DELAY_IN_MS);
-      cy.get("input").type("3");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("3");
+      cy.contains(BUTTON__ADD).click();
       cy.wait(SHORT_DELAY_IN_MS);
-      cy.get("input").type("9");
-      cy.contains("Добавить").click();
+      cy.get(INPUT).type("9");
+      cy.contains(BUTTON__ADD).click();
       cy.wait(SHORT_DELAY_IN_MS);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.contain("2");
           expect($item).to.contain("head");
@@ -357,10 +358,10 @@ describe("queue component works correctly", () => {
         }
       });
 
-      cy.contains("Очистить").click();
+      cy.contains(BUTTON__CLEAR).click();
       cy.wait(SHORT_DELAY_IN_MS * 3);
 
-      cy.get("[class*=circle_content]").each(($item, index) => {
+      cy.get(CIRCLE_CONTENT).each(($item, index) => {
         if (index === 0) {
           expect($item).to.not.contain("2");
           expect($item).to.not.contain("head");

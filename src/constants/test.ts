@@ -1,0 +1,17 @@
+export const CIRCLE_CIRCLE = '[class*="circle_circle"]';
+export const CIRCLE_CONTENT = '[class*="circle_content"]';
+export const CIRCLE_SMALL = '[class*=circle_small]';
+export const INPUT = "input";
+export const INPUT_VALUE = 'input[name="value"]';
+export const INPUT_INDEX = 'input[name="index"]';
+export const INPUT_TEXT = 'input[type="text"]';
+export const BUTTON = "button";
+export const BUTTON__ADD = "Добавить";
+export const BUTTON__CLEAR = "Очистить";
+export const BUTTON__DELETE = "Удалить";
+export const INPUT_ADD_HEAD = "Добавить в head";
+export const INPUT_ADD_TAIL = "Добавить в tail";
+export const INPUT_DEL_HEAD = "Удалить из head";
+export const INPUT_DEL_TAIL = "Удалить из tail";
+export const INPUT_ADD_INDEX = "Добавить по индексу";
+export const INPUT_DEL_INDEX = "Удалить по индексу";

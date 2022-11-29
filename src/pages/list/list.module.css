@@ -3,30 +3,29 @@
     flex-direction: column;
     gap: 12px;
   }
-  .input {
+.input {
     max-width: 204px;
   }
   
-  .button {
+.button {
     min-width: 175px;
   }
   
-  .buttonLage {
+.buttonLage {
     min-width: 362px;
   }
   
-  .list {
+.list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
-  
     padding: 90px 0 0;
     margin: 0;
     list-style-type: none;
   }
   
-  .listElementsWrapper {
+.listElementsWrapper {
     display: flex;
     align-items: center;
   gap: 16px;
