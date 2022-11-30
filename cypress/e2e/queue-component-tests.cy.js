@@ -1,4 +1,4 @@
-import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR } from "../../src/constants/test";
+import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR, BORDER, BORDER_DEFAULT, BORDER_PROCC } from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("queue component works correctly", () => {
@@ -63,8 +63,8 @@ describe("queue component works correctly", () => {
           if (index === 0) {
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(210, 82, 225)"
+              BORDER,
+              BORDER_PROCC
             );
           }
         });
@@ -78,8 +78,8 @@ describe("queue component works correctly", () => {
           if (index === 0) {
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(0, 50, 255)"
+              BORDER,
+              BORDER_DEFAULT
             );
           }
         });
@@ -109,8 +109,8 @@ describe("queue component works correctly", () => {
           if (index === 1) {
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(210, 82, 225)"
+              BORDER,
+              BORDER_PROCC
             );
           }
         });
@@ -124,8 +124,8 @@ describe("queue component works correctly", () => {
           if (index === 1) {
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(0, 50, 255)"
+              BORDER,
+              BORDER_DEFAULT
             );
           }
         });
@@ -159,8 +159,8 @@ describe("queue component works correctly", () => {
           if (index === 2) {
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(210, 82, 225)"
+              BORDER,
+              BORDER_PROCC
             );
           }
         });
@@ -174,8 +174,8 @@ describe("queue component works correctly", () => {
           if (index === 2) {
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(0, 50, 255)"
+              BORDER,
+              BORDER_DEFAULT
             );
           }
         });
@@ -220,8 +220,8 @@ describe("queue component works correctly", () => {
           if (index === 0)
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(210, 82, 225)"
+              BORDER,
+              BORDER_PROCC
             );
         });
 
@@ -234,7 +234,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
         if (index === 1) {
           expect($item).contain("3");
@@ -242,7 +242,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
         if (index === 2) {
           expect($item).contain("9");
@@ -250,7 +250,7 @@ describe("queue component works correctly", () => {
           expect($item).contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
       });
 
@@ -263,8 +263,8 @@ describe("queue component works correctly", () => {
           if (index === 1)
             cy.wrap($item).should(
               "have.css",
-              "border",
-              "4px solid rgb(210, 82, 225)"
+              BORDER,
+              BORDER_PROCC
             );
         });
 
@@ -277,7 +277,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
         if (index === 1) {
           expect($item).to.not.contain("3");
@@ -285,7 +285,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
         if (index === 2) {
           expect($item).contain("9");
@@ -293,7 +293,7 @@ describe("queue component works correctly", () => {
           expect($item).contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
       });
 
@@ -309,7 +309,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
         if (index === 1) {
           expect($item).to.not.contain("3");
@@ -317,7 +317,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
         if (index === 2) {
           expect($item).to.not.contain("9");
@@ -325,7 +325,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+            .should("have.css", BORDER, BORDER_DEFAULT);
         }
       });
     });

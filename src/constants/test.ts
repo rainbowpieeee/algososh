@@ -15,3 +15,7 @@ export const INPUT_DEL_HEAD = "Удалить из head";
 export const INPUT_DEL_TAIL = "Удалить из tail";
 export const INPUT_ADD_INDEX = "Добавить по индексу";
 export const INPUT_DEL_INDEX = "Удалить по индексу";
+export const BORDER = "border";
+export const BORDER_READY = "4px solid rgb(127, 224, 81)";
+export const BORDER_DEFAULT = "4px solid rgb(0, 50, 255)";
+export const BORDER_PROCC = "4px solid rgb(210, 82, 225)";

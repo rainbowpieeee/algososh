@@ -1,4 +1,4 @@
-import { CIRCLE_CIRCLE, BUTTON, INPUT_TEXT } from "../../src/constants/test";
+import { CIRCLE_CIRCLE, BUTTON, INPUT_TEXT, BORDER, BORDER_PROCC, BORDER_READY } from "../../src/constants/test";
 import { DELAY_IN_MS } from "../../src/constants/delays";
 import { ElementStates } from "../../src/types/element-states";
 
@@ -38,22 +38,27 @@ describe("page string display correctly", () => {
 
     cy.get(CIRCLE_CIRCLE).each(($div, index) => {
       if (index === 0 || index === 4) {
-        cy.wrap($div).should("have.css", "border", "3.99148px solid rgb(127, 224, 81)");
+        cy.wrap($div).should("have.css", BORDER, BORDER_READY);
       }
     });
 
     cy.get(CIRCLE_CIRCLE).each(($div, index) => {
-      if (index === 0) cy.wrap($div).should("have.css", "border", "3.99148px solid rgb(127, 224, 81)").contains("o");
-      if (index === 4) cy.wrap($div).should("have.css", "border", "3.99148px solid rgb(127, 224, 81)").contains("h");
+      if (index === 0) cy.wrap($div).should("have.css", BORDER, BORDER_READY).contains("o");
+      if (index === 4) cy.wrap($div).should("have.css", BORDER, BORDER_READY).contains("h");
+
+      if (index === 1) cy.wrap($div).should("have.css", BORDER, BORDER_PROCC).contains("e");
+      if (index === 3) cy.wrap($div).should("have.css", BORDER, BORDER_PROCC).contains("l");
     });
 
     cy.get(CIRCLE_CIRCLE).each(($div, index) => {
-      if (index === 1) cy.wrap($div).should("have.css", "border", "3.99148px solid rgb(127, 224, 81)").contains("l");
-      if (index === 3) cy.wrap($div).should("have.css", "border", "3.99148px solid rgb(127, 224, 81)").contains("e");
+      if (index === 1) cy.wrap($div).should("have.css", BORDER, BORDER_READY).contains("l");
+      if (index === 3) cy.wrap($div).should("have.css", BORDER, BORDER_READY).contains("e");
+
+      if (index === 2) cy.wrap($div).should("have.css", BORDER, BORDER_PROCC).contains("l");
     });
 
     cy.get(CIRCLE_CIRCLE).each(($div, index) => {
-      if (index === 2) cy.wrap($div).should("have.css", "border", "3.99148px solid rgb(127, 224, 81)").contains("l");
+      if (index === 2) cy.wrap($div).should("have.css", BORDER, BORDER_READY).contains("l");
     });
 
     cy.get(CIRCLE_CIRCLE).each(($div, index) => {
