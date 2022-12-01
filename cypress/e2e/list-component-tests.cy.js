@@ -1,5 +1,5 @@
 import { CIRCLE_CIRCLE, CIRCLE_CONTENT, CIRCLE_SMALL, INPUT, INPUT_INDEX, INPUT_VALUE, INPUT_ADD_HEAD, 
-  INPUT_ADD_INDEX, INPUT_ADD_TAIL, INPUT_DEL_HEAD, INPUT_DEL_INDEX, INPUT_DEL_TAIL, BORDER, BORDER_DEFAULT, BORDER_PROCC, BORDER_READY} from "../../src/constants/test";
+  INPUT_ADD_INDEX, INPUT_ADD_TAIL, INPUT_DEL_HEAD, INPUT_DEL_INDEX, INPUT_DEL_TAIL, BORDER, BORDER_DEFAULT, BORDER_PROCC, BORDER_READY } from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("list component works correctly", () => {
@@ -304,9 +304,10 @@ describe("list component works correctly", () => {
 
 /*
 Список
+
     Проверьте, что если в инпуте пусто,
-     то кнопка добавления недоступна,
-      кнопки добавления по индексу и удаления по индексу недоступны тоже.
+    то кнопка добавления недоступна,
+    кнопки добавления по индексу и удаления по индексу недоступны тоже.
       
     Проверьте корректность:
         отрисовки дефолтного списка.
