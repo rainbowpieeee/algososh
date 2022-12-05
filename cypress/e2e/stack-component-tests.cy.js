@@ -1,4 +1,4 @@
-import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR, BORDER, BORDER_DEFAULT, BORDER_PROCC, BORDER_READY } from "../../src/constants/test";
+import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR, BORDER, COLOR_DEFAULT, COLOR_PROCC } from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("stack component works correctly", () => {
@@ -62,7 +62,7 @@ describe("stack component works correctly", () => {
           cy.wrap($item).should(
             "have.css",
             BORDER,
-            BORDER_PROCC
+            COLOR_PROCC
           );
         });
 
@@ -75,7 +75,7 @@ describe("stack component works correctly", () => {
           cy.wrap($item).should(
             "have.css",
             BORDER,
-            BORDER_DEFAULT
+            COLOR_DEFAULT
           );
         });
 
@@ -105,7 +105,7 @@ describe("stack component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
           }
         });
@@ -120,7 +120,7 @@ describe("stack component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_DEFAULT
+              COLOR_DEFAULT
             );
           }
         });
@@ -156,7 +156,7 @@ describe("stack component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
           }
         });
@@ -171,7 +171,7 @@ describe("stack component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_DEFAULT
+              COLOR_DEFAULT
             );
           }
         });
@@ -199,7 +199,7 @@ describe("stack component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
         });
       cy.wait(SHORT_DELAY_IN_MS);
@@ -224,7 +224,7 @@ describe("stack component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
           }
         });

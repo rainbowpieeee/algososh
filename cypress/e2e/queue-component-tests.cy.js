@@ -1,4 +1,4 @@
-import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR, BORDER, BORDER_DEFAULT, BORDER_PROCC } from "../../src/constants/test";
+import { CIRCLE_CIRCLE, CIRCLE_CONTENT, INPUT, BUTTON__ADD, BUTTON__DELETE, BUTTON__CLEAR, BORDER, COLOR_DEFAULT, COLOR_PROCC } from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("queue component works correctly", () => {
@@ -64,7 +64,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
           }
         });
@@ -79,7 +79,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_DEFAULT
+              COLOR_DEFAULT
             );
           }
         });
@@ -110,7 +110,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
           }
         });
@@ -125,7 +125,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_DEFAULT
+              COLOR_DEFAULT
             );
           }
         });
@@ -160,7 +160,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
           }
         });
@@ -175,7 +175,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_DEFAULT
+              COLOR_DEFAULT
             );
           }
         });
@@ -221,7 +221,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
         });
 
@@ -234,7 +234,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
         if (index === 1) {
           expect($item).contain("3");
@@ -242,7 +242,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
         if (index === 2) {
           expect($item).contain("9");
@@ -250,7 +250,7 @@ describe("queue component works correctly", () => {
           expect($item).contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
       });
 
@@ -264,7 +264,7 @@ describe("queue component works correctly", () => {
             cy.wrap($item).should(
               "have.css",
               BORDER,
-              BORDER_PROCC
+              COLOR_PROCC
             );
         });
 
@@ -277,7 +277,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
         if (index === 1) {
           expect($item).to.not.contain("3");
@@ -285,7 +285,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
         if (index === 2) {
           expect($item).contain("9");
@@ -293,7 +293,7 @@ describe("queue component works correctly", () => {
           expect($item).contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
       });
 
@@ -309,7 +309,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
         if (index === 1) {
           expect($item).to.not.contain("3");
@@ -317,7 +317,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
         if (index === 2) {
           expect($item).to.not.contain("9");
@@ -325,7 +325,7 @@ describe("queue component works correctly", () => {
           expect($item).to.not.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
       });
     });

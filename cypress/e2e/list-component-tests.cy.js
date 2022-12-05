@@ -1,5 +1,5 @@
 import { CIRCLE_CIRCLE, CIRCLE_CONTENT, CIRCLE_SMALL, INPUT, INPUT_INDEX, INPUT_VALUE, INPUT_ADD_HEAD, 
-  INPUT_ADD_INDEX, INPUT_ADD_TAIL, INPUT_DEL_HEAD, INPUT_DEL_INDEX, INPUT_DEL_TAIL, BORDER, BORDER_DEFAULT, BORDER_PROCC, BORDER_READY } from "../../src/constants/test";
+  INPUT_ADD_INDEX, INPUT_ADD_TAIL, INPUT_DEL_HEAD, INPUT_DEL_INDEX, INPUT_DEL_TAIL, BORDER, COLOR_DEFAULT, COLOR_PROCC, COLOR_READY } from "../../src/constants/test";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("list component works correctly", () => {
@@ -57,7 +57,7 @@ describe("list component works correctly", () => {
         .each(($item, index) => {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
           if (index === 0) {
             expect($item).to.contain("head");
           }
@@ -76,7 +76,7 @@ describe("list component works correctly", () => {
           cy.wrap($item)
             .siblings()
             .find(CIRCLE_SMALL)
-            .should("have.css", BORDER, BORDER_PROCC)
+            .should("have.css", BORDER, COLOR_PROCC)
             .should("have.text", "239");
         }
       });
@@ -87,7 +87,7 @@ describe("list component works correctly", () => {
         if (index === 0) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_READY)
+            .should("have.css", BORDER, COLOR_READY)
             .should("have.text", "239");
         }
       });
@@ -99,7 +99,7 @@ describe("list component works correctly", () => {
           expect($item).to.contain("head");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT)
+            .should("have.css", BORDER, COLOR_DEFAULT)
             .should("have.text", "239");
         }
       });
@@ -115,12 +115,12 @@ describe("list component works correctly", () => {
           if (index < currentIdx)
             cy.wrap($item)
               .find(CIRCLE_CIRCLE)
-              .should("have.css", BORDER, BORDER_DEFAULT);
+              .should("have.css", BORDER, COLOR_DEFAULT);
           if (index === currentIdx) {
             cy.wrap($item)
               .siblings()
               .find(CIRCLE_SMALL)
-              .should("have.css", BORDER, BORDER_PROCC)
+              .should("have.css", BORDER, COLOR_PROCC)
               .should("have.text", "239");
           }
         });
@@ -132,7 +132,7 @@ describe("list component works correctly", () => {
         if (index === 6) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_READY)
+            .should("have.css", BORDER, COLOR_READY)
             .should("have.text", "239");
         }
       });
@@ -143,7 +143,7 @@ describe("list component works correctly", () => {
         if (index === 6) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT)
+            .should("have.css", BORDER, COLOR_DEFAULT)
             .should("have.text", "239");
           expect($item).to.contain("tail");
         }
@@ -161,12 +161,12 @@ describe("list component works correctly", () => {
           if (index < currentIdx)
             cy.wrap($item)
               .find(CIRCLE_CIRCLE)
-              .should("have.css", BORDER, BORDER_DEFAULT);
+              .should("have.css", BORDER, COLOR_DEFAULT);
           if (index === currentIdx) {
             cy.wrap($item)
               .siblings()
               .find(CIRCLE_SMALL)
-              .should("have.css", BORDER, BORDER_PROCC)
+              .should("have.css", BORDER, COLOR_PROCC)
               .should("have.text", "239");
           }
         });
@@ -178,7 +178,7 @@ describe("list component works correctly", () => {
         if (index === 3) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_READY)
+            .should("have.css", BORDER, COLOR_READY)
             .should("have.text", "239");
         }
       });
@@ -189,7 +189,7 @@ describe("list component works correctly", () => {
         if (index === 3) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT)
+            .should("have.css", BORDER, COLOR_DEFAULT)
             .should("have.text", "239");
           expect($item).to.contain("3");
         }
@@ -204,7 +204,7 @@ describe("list component works correctly", () => {
           cy.wrap($item)
             .siblings()
             .find(CIRCLE_SMALL)
-            .should("have.css", BORDER, BORDER_PROCC)
+            .should("have.css", BORDER, COLOR_PROCC)
             .should("not.have.text", "");
         }
       });
@@ -215,7 +215,7 @@ describe("list component works correctly", () => {
         if (index === 0) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
       });
 
@@ -226,7 +226,7 @@ describe("list component works correctly", () => {
           expect($item).to.contain("head");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
       });
     });
@@ -239,7 +239,7 @@ describe("list component works correctly", () => {
           cy.wrap($item)
             .siblings()
             .find(CIRCLE_SMALL)
-            .should("have.css", BORDER, BORDER_PROCC)
+            .should("have.css", BORDER, COLOR_PROCC)
             .should("not.have.text", "");
         }
       });
@@ -250,7 +250,7 @@ describe("list component works correctly", () => {
         if (index === 5) {
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_READY);
+            .should("have.css", BORDER, COLOR_READY);
         }
       });
 
@@ -261,7 +261,7 @@ describe("list component works correctly", () => {
           expect($item).to.contain("tail");
           cy.wrap($item)
             .find(CIRCLE_CIRCLE)
-            .should("have.css", BORDER, BORDER_DEFAULT);
+            .should("have.css", BORDER, COLOR_DEFAULT);
         }
       });
     });
@@ -277,7 +277,7 @@ describe("list component works correctly", () => {
           if (index <= currentIdx)
             cy.wrap($item)
               .find(CIRCLE_CIRCLE)
-              .should("have.css", BORDER, BORDER_DEFAULT);
+              .should("have.css", BORDER, COLOR_DEFAULT);
         });
         cy.wait(SHORT_DELAY_IN_MS);
       }
@@ -286,7 +286,7 @@ describe("list component works correctly", () => {
           cy.wrap($item)
             .siblings()
             .find(CIRCLE_SMALL)
-            .should("have.css", BORDER, BORDER_PROCC)
+            .should("have.css", BORDER, COLOR_PROCC)
             .should("not.have.text", "");
         }
       });
@@ -296,7 +296,7 @@ describe("list component works correctly", () => {
       cy.get(CIRCLE_CONTENT).each(($item) => {
         cy.wrap($item)
           .find(CIRCLE_CIRCLE)
-          .should("have.css", BORDER, BORDER_DEFAULT);
+          .should("have.css", BORDER, COLOR_DEFAULT);
       });
     });
   });
