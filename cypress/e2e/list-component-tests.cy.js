@@ -116,13 +116,6 @@ describe("list component works correctly", () => {
             cy.wrap($item)
               .find(CIRCLE_CIRCLE)
               .should("have.css", BORDER, COLOR_DEFAULT);
-          if (index === currentIdx) {
-            cy.wrap($item)
-              .siblings()
-              .find(CIRCLE_SMALL)
-              .should("have.css", BORDER, COLOR_PROCC)
-              .should("have.text", "239");
-          }
         });
 
         cy.wait(SHORT_DELAY_IN_MS);
@@ -162,13 +155,6 @@ describe("list component works correctly", () => {
             cy.wrap($item)
               .find(CIRCLE_CIRCLE)
               .should("have.css", BORDER, COLOR_DEFAULT);
-          if (index === currentIdx) {
-            cy.wrap($item)
-              .siblings()
-              .find(CIRCLE_SMALL)
-              .should("have.css", BORDER, COLOR_PROCC)
-              .should("have.text", "239");
-          }
         });
 
         cy.wait(SHORT_DELAY_IN_MS);

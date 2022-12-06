@@ -54,7 +54,7 @@ describe("page string display correctly", () => {
       if (index === 1) cy.wrap($div).should("have.css", BORDER, COLOR_READY).contains("l");
       if (index === 3) cy.wrap($div).should("have.css", BORDER, COLOR_READY).contains("e");
 
-      if (index === 2) cy.wrap($div).should("have.css", BORDER, COLOR_PROCC).contains("l");
+      if (index === 2) cy.wrap($div).should("have.css", BORDER, COLOR_READY).contains("l");
     });
 
     cy.get(CIRCLE_CIRCLE).each(($div, index) => {
